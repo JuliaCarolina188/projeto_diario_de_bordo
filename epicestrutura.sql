@@ -104,9 +104,12 @@ CREATE TABLE `evento` (
   `descrição` text,
   `quando` date DEFAULT NULL,
   `navegacao` int DEFAULT NULL,
+  `criatura` int DEFAULT NULL,
   PRIMARY KEY (`id_evento`),
   KEY `navegacao` (`navegacao`),
-  CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`navegacao`) REFERENCES `navegacao` (`id_navegacao`)
+  KEY `criatura` (`criatura`),
+  CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`navegacao`) REFERENCES `navegacao` (`id_navegacao`),
+  CONSTRAINT `evento_ibfk_2` FOREIGN KEY (`criatura`) REFERENCES `criatura` (`id_criatura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -127,17 +130,14 @@ DROP TABLE IF EXISTS `faz_parte_da_tripulacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `faz_parte_da_tripulacao` (
-  `id_tripulacao` int NOT NULL AUTO_INCREMENT,
+  `id_faz_parte` int NOT NULL AUTO_INCREMENT,
   `id_navegacao` int DEFAULT NULL,
   `id_navegador` int DEFAULT NULL,
-  `login` int DEFAULT NULL,
-  PRIMARY KEY (`id_tripulacao`),
+  PRIMARY KEY (`id_faz_parte`),
   KEY `id_navegacao` (`id_navegacao`),
   KEY `id_navegador` (`id_navegador`),
-  KEY `login` (`login`),
   CONSTRAINT `faz_parte_da_tripulacao_ibfk_1` FOREIGN KEY (`id_navegacao`) REFERENCES `navegacao` (`id_navegacao`),
-  CONSTRAINT `faz_parte_da_tripulacao_ibfk_2` FOREIGN KEY (`id_navegador`) REFERENCES `navegador` (`id_navegador`),
-  CONSTRAINT `faz_parte_da_tripulacao_ibfk_3` FOREIGN KEY (`login`) REFERENCES `login` (`id_login`)
+  CONSTRAINT `faz_parte_da_tripulacao_ibfk_2` FOREIGN KEY (`id_navegador`) REFERENCES `navegador` (`id_navegador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -172,6 +172,34 @@ CREATE TABLE `login` (
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `maestria`
+--
+
+DROP TABLE IF EXISTS `maestria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maestria` (
+  `id_maestria` int NOT NULL AUTO_INCREMENT,
+  `id_equipamento` int DEFAULT NULL,
+  `id_navegador` int DEFAULT NULL,
+  PRIMARY KEY (`id_maestria`),
+  KEY `id_equipamento` (`id_equipamento`),
+  KEY `id_navegador` (`id_navegador`),
+  CONSTRAINT `maestria_ibfk_1` FOREIGN KEY (`id_equipamento`) REFERENCES `equipamento` (`id_equipamento`),
+  CONSTRAINT `maestria_ibfk_2` FOREIGN KEY (`id_navegador`) REFERENCES `navegador` (`id_navegador`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maestria`
+--
+
+LOCK TABLES `maestria` WRITE;
+/*!40000 ALTER TABLE `maestria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maestria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -214,14 +242,16 @@ CREATE TABLE `navegador` (
   `id_navegador` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(30) NOT NULL,
   `nascimento` date DEFAULT NULL,
-  `cargo` varchar(30) DEFAULT NULL,
+  `cargo` int DEFAULT NULL,
   `login` int DEFAULT NULL,
   `id_navio` int DEFAULT NULL,
   PRIMARY KEY (`id_navegador`),
   KEY `login` (`login`),
   KEY `id_navio` (`id_navio`),
+  KEY `cargo` (`cargo`),
   CONSTRAINT `navegador_ibfk_1` FOREIGN KEY (`login`) REFERENCES `login` (`id_login`),
-  CONSTRAINT `navegador_ibfk_2` FOREIGN KEY (`id_navio`) REFERENCES `navio` (`id_navio`)
+  CONSTRAINT `navegador_ibfk_2` FOREIGN KEY (`id_navio`) REFERENCES `navio` (`id_navio`),
+  CONSTRAINT `navegador_ibfk_3` FOREIGN KEY (`cargo`) REFERENCES `cargo` (`id_cargo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -256,34 +286,6 @@ LOCK TABLES `navio` WRITE;
 /*!40000 ALTER TABLE `navio` DISABLE KEYS */;
 /*!40000 ALTER TABLE `navio` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `tem_maestria_com`
---
-
-DROP TABLE IF EXISTS `tem_maestria_com`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tem_maestria_com` (
-  `id_maestria` int NOT NULL AUTO_INCREMENT,
-  `id_equipamento` int DEFAULT NULL,
-  `login` int DEFAULT NULL,
-  PRIMARY KEY (`id_maestria`),
-  KEY `login` (`login`),
-  KEY `id_equipamento` (`id_equipamento`),
-  CONSTRAINT `tem_maestria_com_ibfk_1` FOREIGN KEY (`login`) REFERENCES `login` (`id_login`),
-  CONSTRAINT `tem_maestria_com_ibfk_2` FOREIGN KEY (`id_equipamento`) REFERENCES `equipamento` (`id_equipamento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tem_maestria_com`
---
-
-LOCK TABLES `tem_maestria_com` WRITE;
-/*!40000 ALTER TABLE `tem_maestria_com` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tem_maestria_com` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -294,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-25  8:40:31
+-- Dump completed on 2025-09-25  9:23:36
