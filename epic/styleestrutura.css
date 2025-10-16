@@ -1,0 +1,150 @@
+body {
+    background-repeat:no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100%;
+
+    color: rgb(82, 62, 24);
+    
+    margin: 0px;
+}
+
+* {
+    font-family: "Libre Baskerville", serif;
+    box-sizing: border-box;
+
+    font-size: 1em;
+}
+
+main {
+    background-image: url("papel.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section {
+    display: flex;
+}
+
+header{
+    background-color: rgb(102, 78, 33);
+
+    width: 100%;
+    height: 170px;
+
+    justify-content: space-around;
+    display: flex;
+}
+
+nav{
+    font-size: 20px;
+    width: 50%;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+}
+
+h1{
+    color: rgb(214, 173, 97);
+    font-size: 3em;
+
+    margin-top: 0px;
+    margin: auto;
+}
+
+h2{
+    color: rgb(82, 62, 24);
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.embacadinho {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);  
+
+    height: fit-content;
+    width: fit-content;
+
+    margin: auto;
+    margin-top: 30px;
+
+    display: flex;
+}
+
+a{
+    color:rgb(214, 173, 97);; 
+    margin: 10px;
+}
+
+hr {
+    height: 4px;
+    width: 75%;
+
+    background-color:  rgb(102, 78, 33);
+    border-radius: 5px;
+    border: none;
+
+    margin-top: 30px;
+}
+
+.adicionar {
+    margin: auto;
+    margin-top: 20px;
+
+    width: 29vw;
+    height: 500px;
+
+    padding: 20px;
+    border-radius: 30px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);  
+
+    display: block;
+}
+
+.adicionar fieldset {
+    height: 100%;
+}
+
+
+.pessoa {
+    width: 300px;
+    height: 300px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px); 
+
+    margin: auto;
+    margin-bottom: 60px;
+    padding: 20px;
+
+    border: solid 2px rgb(102, 78, 33);
+    border-radius: 10px;
+}
+
+fieldset{
+    border: 2px solid rgb(102, 78, 33);
+    border-radius: 10px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px); 
+
+    padding: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+legend {
+    padding: 5px;
+
+    border: solid 2px;
+    border-radius: 10px;
+    text-align: center;
+
+    margin: auto;
+}
