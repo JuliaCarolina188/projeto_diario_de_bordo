@@ -107,6 +107,9 @@ CREATE TABLE `navegador` (
   `nascimento` date DEFAULT NULL,
   `cargo` int DEFAULT NULL,
   `navio` int DEFAULT NULL,
+  `sobrenome` varchar(30) DEFAULT NULL,
+  `titulo` varchar(30) DEFAULT NULL,
+  `origem` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_navegador`),
   KEY `cargo` (`cargo`),
   KEY `navio` (`navio`),
@@ -185,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-08  9:03:39
+-- Dump completed on 2025-10-23  8:51:42

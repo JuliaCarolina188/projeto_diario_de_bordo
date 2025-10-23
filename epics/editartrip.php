@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style><?php include "styleinput.css"?></style>
     <style><?php include "styleestrutura.css"?></style>
+    <style><?php include "classesids.css"?></style>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -12,11 +14,12 @@
 </head>
 <body>
     <header>
-        <h1>Diário de Bordo</h1>
+        <a href="index.php"><h1>Diário de Bordo</h1></a>
         <nav>
-            <a href="mostrar.php">Ver sua tripulação</a>
-            <a href="novo.php">Adicionar novo navegador</a>
-            <a href="alterar.php">Editar tripulação</a>
+            <a href="editartrip.php">Editar tripulação</a>
+            <a href="editararmas.php">Editar Armas</a>
+            <a href="editarcargos.php">Editar Cargos</a>
+            <a href="editarnavios.php">Editar Navios</a>
         </nav>
     </header>
 <main>
@@ -67,74 +70,10 @@
         </form>
     </section>
 
-    <hr>
-
     <section>
-        <div class="adicionar">
-            <fieldset>
-            <legend><h2>Adicionar Arma</h2></legend>
-            <label for="nomarma">Nome <input type="text" id="nomarma"></label><br>
-            <label for="tiparma">Tipo <input type="text" id="tiparma"></label><br>
-            <label for="desarma">Descrição</label><br>
-            <textarea name="desarma" id="desarma"></textarea>
-
-            <input type="submit" value="Enviar">
-
-            <p>
-                lista das armas que ja existem
-            </p>
-            </fieldset>
-        </div>
-
-        <div class="adicionar">
-            <fieldset>
-            <legend><h2>Adicionar Cargo</h2></legend>
-
-            <label for="nomcargo">Nome <input type="text" id="nomcargo"></label><br>
-            <label for="desccargo">Descrição</label><br>
-            <textarea name="" id="desccargo"></textarea>
-
-            <input type="submit" value="Enviar">
-
-            <p>
-                lista dos cargos que já existem e descrição das funções
-            </p>
-            </fieldset>
-        </div>
-
-        <div class="adicionar">
-            <fieldset>
-            <legend><h2>Adicionar Navio</h2></legend>
-
-            <label for="arma">Nome <input type="text"></label><br>
-
-            <label for="tiponavio">Tipo </label>
-            <select name="tiponavio" id="tiponavio">
-                <option value="1" selected>Número 1</option>
-                <option value="2">Número 2</option>
-                <option value="3">Número 3</option>
-                <option value="4">Número 4</option>
-            </select>
-            <br>
-
-            <input type="submit" value="Enviar">
-
-            <p>
-                lista dos navios que ja existem e as funções
-            </p>
-            </fieldset>
-        </div>
-    </section>
-
-    <hr>
-
-    <h2 class="embacadinho">Tripulação</h2> <br>
-    <section>
-            <div class="pessoa">
-                <p>foto</p>
-                <p>nome, sobrenome, título, de onde veio <br>idade <br></p>
-                <p>cargo</p>
-            </div>
+        <p>
+            lista com os navegadorres atuais
+        </p>
     </section>
 </main>
 </body>
