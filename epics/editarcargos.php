@@ -22,26 +22,25 @@
             <a href="editarnavios.php">Editar Navios</a>
         </nav>
     </header>
+
 <main>
     <section>
-        <div class="mostrar" style="background-color: pink;">
+        <div class="mostrar">
             <h2>Cargos</h2>
             <p>lista dos cargos com a descrição deles</p>
         </div>
 
         <div class="adicionar">
             <fieldset>
-            <legend><h2>Adicionar Cargo</h2></legend>
+                <legend><h2>Adicionar Cargo</h2></legend>
 
-            <label for="nomcargo">Nome <input type="text" id="nomcargo"></label><br>
-            <label for="desccargo">Descrição</label><br>
-            <textarea name="" id="desccargo"></textarea>
+                <label for="nomcargo">Nome <input type="text" id="nomcargo"></label><br>
+                <label for="desccargo">Descrição</label><br>
+                <textarea name="" id="desccargo"></textarea>
 
-            <input type="submit" value="Enviar">
+                <br>
 
-            <p>
-                lista dos cargos que já existem e descrição das funções
-            </p>
+                <button type="submit">Enviar</button>
             </fieldset>
         </div>
     </section>

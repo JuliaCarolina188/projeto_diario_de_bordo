@@ -25,6 +25,7 @@
 <main>
     <section class="mostrartripulacao">
         <h2>Tripulação</h2> <br>
+
         <div class="container">
             <div class="pessoa">
                 <p>foto</p>
@@ -32,6 +33,7 @@
                 <p>cargo</p>
             </div>
         </div>
+        
     </section>
 
     <hr>

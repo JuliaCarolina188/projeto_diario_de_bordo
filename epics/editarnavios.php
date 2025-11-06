@@ -31,24 +31,20 @@
 
         <div class="adicionar">
             <fieldset>
-            <legend><h2>Adicionar Navio</h2></legend>
+                <legend><h2>Adicionar Navio</h2></legend>
 
-            <label for="arma">Nome <input type="text"></label><br>
+                <label for="arma">Nome <input type="text"></label><br>
 
-            <label for="tiponavio">Tipo </label>
-            <select name="tiponavio" id="tiponavio">
-                <option value="1" selected>Número 1</option>
-                <option value="2">Número 2</option>
-                <option value="3">Número 3</option>
-                <option value="4">Número 4</option>
-            </select>
-            <br>
+                <label for="tiponavio">Tipo </label>
+                <select name="tiponavio" id="tiponavio">
+                    <option value="1" selected>Número 1</option>
+                    <option value="2">Número 2</option>
+                    <option value="3">Número 3</option>
+                    <option value="4">Número 4</option>
+                </select>
+                <br><br>
 
-            <input type="submit" value="Enviar">
-
-            <p>
-                lista dos navios que ja existem e as funções
-            </p>
+                <button type="submit">Enviar</button>
             </fieldset>
         </div>
     </section>

@@ -30,17 +30,16 @@
         </div>
         <div class="adicionar">
             <fieldset>
-            <legend><h2>Adicionar Arma</h2></legend>
-            <label for="nomarma">Nome <input type="text" id="nomarma"></label><br>
-            <label for="tiparma">Tipo <input type="text" id="tiparma"></label><br>
-            <label for="desarma">Descrição</label><br>
-            <textarea name="desarma" id="desarma"></textarea>
+                <legend><h2>Adicionar Arma</h2></legend>
+                
+                <label for="nomarma">Nome <input type="text" id="nomarma"></label><br>
+                <label for="tiparma">Tipo <input type="text" id="tiparma"></label><br>
+                <label for="desarma">Descrição</label><br>
+                <textarea name="desarma" id="desarma"></textarea>
 
-            <input type="submit" value="Enviar">
+                <br>
 
-            <p>
-                lista das armas que ja existem
-            </p>
+                <button type="submit">Enviar</button>
             </fieldset>
         </div>
     </section>
