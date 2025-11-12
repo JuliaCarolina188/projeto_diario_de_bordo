@@ -25,7 +25,7 @@ $maestria = $_GET['maestria'];
 
 
 // sql com insert - instrucao parametrizada
-$sql = "insert into aluno (nome, sobrenome, titulo, origem, nascimento, navio, cargo, maestria) values (?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "insert into navegador (nome, sobrenome, titulo, origem, nascimento, navio, cargo, maestria) values (?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $mysqli->prepare($sql);
 
 // vincula valores nas variaveis as marcacoes ??
