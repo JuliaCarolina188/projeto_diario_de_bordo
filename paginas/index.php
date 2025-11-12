@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include "styleinput.css"?></style>
-    <style><?php include "styleestrutura.css"?></style>
-    <style><?php include "classesids.css"?></style>
+    <link rel="stylesheet" href="styleinput.css">
+    <link rel="stylesheet" href="styleestrutura.css">
+    <link rel="stylesheet" href="classesids.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,8 @@
     <header>
         <a href="index.php"><h1>Diário de Bordo</h1></a>
         <nav>
-            <a href="editartrip.php">Editar tripulação</a>
+            <a href="novonavegador.php">Editar tripulação</a>
+            <a href="editarnavegador.php">Editar Navios</a>
             <a href="editararmas.php">Editar Armas</a>
             <a href="editarcargos.php">Editar Cargos</a>
             <a href="editarnavios.php">Editar Navios</a>

@@ -6,11 +6,11 @@
 
     // Linha original: $connection = new mysqli($server, $user, $password, $database);
     // As variáveis usadas são $server, $user, que não foram definidas.
-    
+    //mysqli_report(MYSQLI_REPORT_OFF);
     // CORREÇÃO:
-    $connection = new mysqli($servername, $username, $password, $database);
+    $mysqli = new mysqli($servername, $username, $password, $database);
 
-    if($connection->connect_error){
-        die('Erro de conexão: '.$connection->connect_error);
+    if($mysqli->connect_error){
+        die('Erro de conexão: '.$mysqli->connect_error);
     }
 ?>
