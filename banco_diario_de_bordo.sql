@@ -27,7 +27,7 @@ CREATE TABLE `cargo` (
   `nome` varchar(30) DEFAULT NULL,
   `descricao` text,
   PRIMARY KEY (`id_cargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `equipamento` (
   `tipo` varchar(60) DEFAULT NULL,
   `descricao` text,
   PRIMARY KEY (`id_equipamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `maestria` (
   KEY `equipamento` (`equipamento`),
   CONSTRAINT `maestria_ibfk_1` FOREIGN KEY (`navegador`) REFERENCES `navegador` (`id_navegador`),
   CONSTRAINT `maestria_ibfk_2` FOREIGN KEY (`equipamento`) REFERENCES `equipamento` (`id_equipamento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `navegador` (
   KEY `navio` (`navio`),
   CONSTRAINT `navegador_ibfk_1` FOREIGN KEY (`cargo`) REFERENCES `cargo` (`id_cargo`),
   CONSTRAINT `navegador_ibfk_2` FOREIGN KEY (`navio`) REFERENCES `navio` (`id_navio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `navio` (
   PRIMARY KEY (`id_navio`),
   KEY `tipo` (`tipo`),
   CONSTRAINT `navio_ibfk_1` FOREIGN KEY (`tipo`) REFERENCES `tipo_navio` (`id_tipo_navio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `tipo_navio` (
   `nome` varchar(30) DEFAULT NULL,
   `descricao` text,
   PRIMARY KEY (`id_tipo_navio`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
