@@ -1,6 +1,6 @@
 <?php
 // funcao require_once carrega codigo de outros arquivos e executa
-require_once("./config.php"); // declare $obj da conexao de nome $mysqli
+require_once("../config.php"); // declare $obj da conexao de nome $mysqli
 
 // como o parametro chega por requisicao get, usamos $_GET 
 // para recuperar os valores
@@ -53,6 +53,6 @@ if ($stmt->execute() === TRUE) {
   $html = "Erro ao inserir registro: " . $mysqli->error;
 }
 
-echo "<br>\n<br>\n<a href=\"index.php\">Página inicial</a>\n";
-
+echo "Navegador inserido com sucesso!";
+echo "<br>\n<br>\n     <a href=\"../index.html\">Página inicial</a>       \n";
 ?>

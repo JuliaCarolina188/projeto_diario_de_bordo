@@ -1,11 +1,16 @@
+<?php
+require_once("../config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include "styleinput.css"?></style>
-    <style><?php include "styleestrutura.css"?></style>
-    <style><?php include "classesids.css"?></style>
+    <link rel="stylesheet" href="styleinput.css">
+    <link rel="stylesheet" href="styleestrutura.css">
+    <link rel="stylesheet" href="classesids.css">
+    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +40,7 @@
 
                     <div style="display:flex;">
 
-                         <div class="inf1" style="margin:auto;">
+                        <div class="inf1" style="margin:auto;">
 
                             <label for="nome">Nome <br>
                                 <input type="text" name="nome" id="nome" size="50px" placeholder="Odysseu">
@@ -61,17 +66,38 @@
                             </label><br>
 
                             <label for="navio">De qual navio faz parte? <br>
-                                <select name="navio" id="navio">
-                                    <option value="1" selected>Número 1</option>
-                                    <option value="2">Número 2</option>
-                                    <option value="3">Número 3</option>
-                                </select>                               
+                            <?php
+                                $consulta = $mysqli->prepare("select * from navio");
+                                $consulta->execute();
+                                
+                                $resultado = $consulta->get_result();
+                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
+                                
+                                echo "<select name=\"navio\" id=\"navio\">\n";
+                                echo "\t<option value=\"\">Selecione</option>\n";
+                                foreach($registros as $registro) {
+                                    echo "\t<option value=\"{$registro['id_navio']}\">{$registro['nome']}, número {$registro['id_navio']}</option>\n";
+                                }
+                                echo "</select>\n";
+                            ?>                               
                             </label><br>
 
                             <label for="cargo">Cargo <br>
-                                <select name="cargo" id="cargo">
-                                    <option value="capitao">Capitão</option>
-                                </select>
+                            <?php
+                                $consulta = $mysqli->prepare("select * from cargo");
+                                $consulta->execute();
+                                
+                                $resultado = $consulta->get_result();
+                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
+                                
+                                echo "<select name=\"cargo\" id=\"cargo\">\n";
+                                echo "\t<option value=\"\">Selecione</option>\n";
+                                
+                                foreach($registros as $registro) {
+                                    echo "\t<option value=\"{$registro['id_cargo']}\">{$registro['nome']}</option>\n";
+                                }
+                                echo "</select>\n";
+                            ?>
                             </label><br>
 
                             <label for="maestria">Adicionar maestria <br>
@@ -83,23 +109,11 @@
                         </div>
                     </div>
 
-                <div style="display: flex; justify-content: space-around;">
-
-                    <label for="foto">Foto de perfil 
-                        <input type="file">
-                    </label>
-
+                <div>
                     <button type="submit">Enviar</button>
-
                 </div>    
             </fieldset>
         </form>
-    </section>
-
-    <section>
-        <p>
-            lista com os navegadorres atuais
-        </p>
     </section>
 </main>
 </body>

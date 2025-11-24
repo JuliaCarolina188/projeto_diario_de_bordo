@@ -1,7 +1,3 @@
-<?php
-    require_once("");
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -40,7 +36,7 @@
 
                     <div style="display:flex;">
 
-                         <div class="inf1" style="margin:auto;">
+                        <div class="inf1" style="margin:auto;">
 
                             <label for="nome">Nome <br>
                                 <input type="text" name="nome" id="nome" size="50px" placeholder="Odysseu">
