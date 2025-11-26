@@ -14,34 +14,25 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><h1>Diário de Bordo</h1></a>
-        <nav>
-            <a href="editartrip.php">Editar tripulação</a>
-            <a href="editararmas.php">Editar Armas</a>
-            <a href="editarcargos.php">Editar Cargos</a>
-            <a href="editarnavios.php">Editar Navios</a>
-        </nav>
+        <a href="../index.php"><h1>Diário de Bordo</h1></a>
     </header>
 <main>
     <section>
-        <div class="mostrar">
-            <h2>Armas</h2>
-            <p>lista das armas co a descrição delas</p>
-        </div>
-        <div class="adicionar">
-            <fieldset>
-                <legend><h2>Adicionar Arma</h2></legend>
-                
-                <label for="nomarma">Nome <input type="text" id="nomarma"></label><br>
-                <label for="tiparma">Tipo <input type="text" id="tiparma"></label><br>
-                <label for="desarma">Descrição</label><br>
-                <textarea name="desarma" id="desarma"></textarea>
+        <form action="insertequipamento.php" method="get">
+            <h2>Adicionar Arma</h2>
+            
+            <label for="nome_equipamento">Nome <input type="text" id="nome_equipamento" name="nome_equipamento"></label><br>
 
-                <br>
+            <label for="tipo_equipamento">Tipo <input type="text" id="tipo_equipamento" name="tipo_equipamento"></label><br>
 
-                <button type="submit">Enviar</button>
-            </fieldset>
-        </div>
+            <label for="desc_equipamento">Descrição</label><br>
+            <textarea name="desc_equipamento" id="desc_equipamento"></textarea>
+
+            <br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
     </section>
 </main>
 </body>

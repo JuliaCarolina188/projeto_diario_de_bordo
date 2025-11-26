@@ -36,7 +36,7 @@ $html = "";
 if ($stmt->execute() === TRUE) {
   // no caso de uso de AUTO_INCREMENT sera preciso usar funcao que recupera que é a nova chave gerada
   //$nova_chave = $stmt->insert_id;
-  $html = "Registro inserido com sucesso!";
+  echo "Navegador inserido com sucesso!";
   // houve sucesso na criacao do registro, vai fazer o insert do campo da relacao N:N
   // se a chave usa auto increment é preciso saber qual a PK atribuida
   // prepara
@@ -53,7 +53,6 @@ if ($stmt->execute() === TRUE) {
   $html = "Erro ao inserir registro: " . $mysqli->error;
 }
 
-echo "Navegador inserido com sucesso!";
 echo "<br>\n<br>\n     <a href=\"../index.html\">Página inicial</a>       \n";
 echo "<br>\n<br>\n     <a href=\"../mostrar/mostrarnavegador.php\">Ver tripulação</a>       \n";
 ?>

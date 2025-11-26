@@ -1,53 +1,49 @@
+<?php
+require_once('../config.php')
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include "styleinput.css"?></style>
-    <style><?php include "styleestrutura.css"?></style>
-    <style><?php include "classesids.css"?></style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Diário de Bordo</title>
 </head>
 <body>
     <header>
-        <a href="index.php"><h1>Diário de Bordo</h1></a>
-        <nav>
-            <a href="editartrip.php">Editar tripulação</a>
-            <a href="editararmas.php">Editar Armas</a>
-            <a href="editarcargos.php">Editar Cargos</a>
-            <a href="editarnavios.php">Editar Navios</a>
-        </nav>
+        <h1>Diário de Bordo</h1>
+        <a href="../mostrar/mostrarnavio.php">Voltar para navios</a><br>
+        <a href="../index.html">Página inicial</a>
+        <hr>
     </header>
+
 <main>
-    <section>
-        <div class="mostrar">
-            <h2>Navios</h2>
-            <p>lista dos tipos de navios e quais navios já tem na navegação</p>
-        </div>
 
-        <div class="adicionar">
-            <fieldset>
-                <legend><h2>Adicionar Navio</h2></legend>
+    <form action="insertnavio.php" method="get">
+        <h2>Novo navio</h2>
+        <label for="nomnavio">Nome <input type="text" id="nomnavio" name="nomnavio"></label><br><br>
+        
+        <p>Tipo</p>
+        <?php 
+            $consulta = $mysqli->prepare("SELECT * FROM tipo_navio");
+            $consulta->execute();
+            
+            $resultado = $consulta->get_result();
+            $registros = $resultado->fetch_all(MYSQLI_ASSOC);
 
-                <label for="arma">Nome <input type="text"></label><br>
+            foreach ($registros as $registro) {
+                echo "<input type=\"radio\" name=\"tipo\" value=\"{$registro['id_tipo_navio']}\" id=\"tipo{$registro['id_tipo_navio']}\">";
+                echo "<label for=\"tipo{$registro['id_tipo_navio']}\"><strong>{$registro['nome']}</strong></label><br>";
+                echo "<small>------------- {$registro['descricao']}</small><br><br>";
+            }
 
-                <label for="tiponavio">Tipo </label>
-                <select name="tiponavio" id="tiponavio">
-                    <option value="1" selected>Número 1</option>
-                    <option value="2">Número 2</option>
-                    <option value="3">Número 3</option>
-                    <option value="4">Número 4</option>
-                </select>
-                <br><br>
+                
+            ?>
 
-                <button type="submit">Enviar</button>
-            </fieldset>
-        </div>
-    </section>
+        <br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
 </main>
 </body>
 </html>

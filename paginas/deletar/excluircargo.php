@@ -27,11 +27,11 @@
 
 
     <?php 
-    if (!isset($_GET['id'])) {
+    if (!isset($_GET['id_cargo'])) {
         echo "Faltou parâmetro";
         die();
     }
-      $id = $_GET['id'];
+      $id = $_GET['id_cargo'];
       // sql com select e marcacao para recebimento de parametro
       $sql = "select * FROM cargo WHERE id_cargo=?";
       // preparacao da instrucao
@@ -54,7 +54,8 @@
     ?>
 
 <main>
-    <form action="deletecargo.php?cargo['id_cargo']">
+    <form action="deletecargo.php?id_cargo=<?=$cargo['id_cargo']?>">
+        <input type="hidden" value="<?=  $cargo['id_cargo']?>" name="id_cargo">
         <p>ID: <?=  $cargo['id_cargo']?></p>
         <p>Nome: <?=  $cargo['nome']?></p>
         <p>Descrição: <?=  $cargo['descricao']?></p>

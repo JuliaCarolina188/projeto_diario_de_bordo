@@ -4,7 +4,7 @@ require_once("../config.php");
 
 
 // sql com insert - instrucao parametrizada
-$id = $_GET['id'];
+$id = $_GET['id_cargo'];
 $sql = "DELETE FROM cargo WHERE id_cargo = ?";
 $stmt = $mysqli->prepare($sql);
 

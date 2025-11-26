@@ -12,7 +12,8 @@
 <body>
     <header>
         <h1>Diário de Bordo</h1>
-        <a href="../index.html">Página inicial</a>
+        <a href="../index.html">Página inicial</a><br>
+        <a href="../inserir/novoquipamento.php">Criar novo equipamento</a>
     </header>
 <main>
     <section class="mostrartripulacao">
@@ -32,8 +33,8 @@
                     echo "Tipo: {$registro['tipo']}<br><br>";
                     echo "{$registro['descricao']}<br>";
 
-                    echo "<a href=\"  ../editar/editarequipamento.php?id={$registro['id_equipamento']}  \">Editar</a> ou ";
-                    echo "<a href=\"  ../deletar/excluirequipamento.php?id={$registro['id_equipamento']}  \">Deletar</a>";
+                    echo "<a href=\"  ../editar/editarequipamento.php?id_equipamento={$registro['id_equipamento']}  \">Editar</a> ou ";
+                    echo "<a href=\"  ../deletar/excluirequipamento.php?id_equipamento={$registro['id_equipamento']}  \">Deletar</a>";
                     
                 echo "<br>";
                 echo "<br>";

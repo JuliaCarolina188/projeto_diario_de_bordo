@@ -14,36 +14,21 @@
 </head>
 <body>
     <header>
-        <a href="index.php"><h1>Diário de Bordo</h1></a>
-        <nav>
-            <a href="editartrip.php">Editar tripulação</a>
-            <a href="editararmas.php">Editar Armas</a>
-            <a href="editarcargos.php">Editar Cargos</a>
-            <a href="editarnavios.php">Editar Navios</a>
-        </nav>
+        <a href="../index.html"><h1>Diário de Bordo</h1></a>
+        
     </header>
 
 <main>
-    <section>
-        <div class="mostrar">
-            <h2>Cargos</h2>
-            <p>lista dos cargos com a descrição deles</p>
-        </div>
+    <form action="insertcargo.php" method="get">
+        <h2>Novo cargo</h2>
+        <label for="nomcargo">Nome <input type="text" id="nomcargo" name="nomcargo"></label><br><br>
+        <label for="'desccargo'">Descrição</label><br>
+        <textarea name="desccargo" id="desccargo"></textarea>
 
-        <div class="adicionar">
-            <fieldset>
-                <legend><h2>Adicionar Cargo</h2></legend>
+        <br><br>
 
-                <label for="nomcargo">Nome <input type="text" id="nomcargo"></label><br>
-                <label for="desccargo">Descrição</label><br>
-                <textarea name="" id="desccargo"></textarea>
-
-                <br>
-
-                <button type="submit">Enviar</button>
-            </fieldset>
-        </div>
-    </section>
+        <button type="submit">Enviar</button>
+    </form>
 </main>
 </body>
 </html>

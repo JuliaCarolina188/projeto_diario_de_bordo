@@ -15,8 +15,10 @@
     </header>
 <main>
     <section class="mostrartripulacao">
-        <h2>Tripulação</h2> <br>
+        <h2>Sobre sua Tripulação</h2> <br>
+        <a href="../inserir/novonav.php">Adicionar novo navegador</a><br>
         <a href="../index.html">Página inicial</a><br><br>
+        <a href=""></a>
 
         <?php
             $consulta = $mysqli->prepare("
