@@ -12,7 +12,7 @@
 <body>
     <header>
         <h1>Diário de Bordo</h1>
-        <a href="../index.php">Página inicial</a>
+        <a href="../index.html">Página inicial</a>
     </header>
 <main>
     <section class="mostrartripulacao">
@@ -26,14 +26,15 @@
             $registros = $resultado->fetch_all(MYSQLI_ASSOC);
             
             foreach($registros as $registro) {
-                echo "ID: {$registro['id_equipamento']}<br>";
+                echo "<strong>{$registro['nome']}</strong><br>"; 
                 echo "<div style=\"margin-left: 30px;\">";
-                    echo "Nome: {$registro['nome']}<br>"; 
-                    echo "Tipo:: {$registro['tipo']}<br>";
-                    echo "Descrição: {$registro['descricao']}<br>";
+                echo "ID: {$registro['id_equipamento']}<br>";
+                    echo "Tipo: {$registro['tipo']}<br><br>";
+                    echo "{$registro['descricao']}<br>";
 
-                    echo "<a href=\"  ../editar/editarequipamento.php?id={$registro['id_navegador']}  \">Editar</a> <br>";
-                    echo "<a href=\"  ../deletar/excluirequipamento.php?id={$registro['id_navegador']}  \">Deletar</a>";
+                    echo "<a href=\"  ../editar/editarequipamento.php?id={$registro['id_equipamento']}  \">Editar</a> ou ";
+                    echo "<a href=\"  ../deletar/excluirequipamento.php?id={$registro['id_equipamento']}  \">Deletar</a>";
+                    
                 echo "<br>";
                 echo "<br>";
                 echo "</div>";

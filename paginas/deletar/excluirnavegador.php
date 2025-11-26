@@ -1,5 +1,5 @@
 <?php
-    require_once("./config.php");
+    require_once("../config.php");
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +20,8 @@
 
 
 
+
 <body>
-    <header>
-        <a href="index.php"><h1>Diário de Bordo</h1></a>
-        <nav>
-            <a href="editartrip.php">Editar tripulação</a>
-            <a href="editararmas.php">Editar Armas</a>
-            <a href="editarcargos.php">Editar Cargos</a>
-            <a href="editarnavios.php">Editar Navios</a>
-        </nav>
-    </header>
-
-
     <?php 
     if (!isset($_GET['id'])) {
         echo "Faltou parâmetro";
@@ -60,97 +50,54 @@
     ?>
 
 <main>
-    <section>
-        <form action="updatenavegador.php" class="formnovo">
-            <fieldset>
-                <legend class="embacadinho"><h2>Adicionar um novo navegador</h2></legend><br>
+    <input type="hidden" value="<?=  $id?>" name="id">
 
-                    <div style="display:flex;">
+    <p>ID: <?=$navegador['id_navegador']?></p>
+    <p>Nome: <?=$navegador['nome']?></p>
+    <p>Sobrenome: <?=$navegador['sobrenome']?></p>
+    <p>Titulo: <?=$navegador['titulo']?></p>
+    <p>Origem: <?=$navegador['origem']?></p><br>
+    <p>Data de nascimento: <?=$navegador['nascimento']?></p>
+    <p>Navio: </p>
+    <?php
+        $consulta = $mysqli->prepare("select * from navio");
+        $consulta->execute();
+        
+        $resultado = $consulta->get_result();
+        $registros = $resultado->fetch_all(MYSQLI_ASSOC);
+        
+        echo "<select name=\"navio\" id=\"navio\">\n";
+        echo "\t<option value=\"\">Selecione</option>\n";
+        foreach($registros as $registro) {
+            echo "\t<option value=\"{$registro['id_navio']}\"". ($navegador['navio'] == $registro['id_navio'] ? " selected" : "") .">{$registro['nome']}, número {$registro['id_navio']}</option>\n";
+        }
+        echo "</select>\n";
+    ?>                               
+    </label>
 
-                         <div class="inf1" style="margin:auto;">
-                            <input type="hidden" value="<?=  $id?>" name="id">
+    <p>Cargo:</p>
 
-                            <label for="nome">Nome <br>
-                                <input type="text" name="nome" id="nome" size="50px" value="<?=  $navegador['nome']?>">
-                            </label><br>
-
-                            <label for="sobrenome">Sobrenome <br>
-                                <input type="text" name="sobrenome" id="sobrenome" size="50px" value="<?=  $navegador['sobrenome']?>">
-                            </label><br>
-
-                            <label for="titulo">Título <br>
-                                <input type="text" name="titulo" id="titulo" size="50px" value="<?=  $navegador['titulo']?>">
-                            </label><br>
-
-                            <label for="origem">Origem <br>
-                                <input type="text" name="origem" id="origem" size="50px" value="<?=  $navegador['origem']?>">
-                            </label><br>
-                        </div>
-                            
-                        <div class="inf1" style="margin:auto;">
-
-                            <label for="nascimento">Data de nascimento<br>
-                                <input type="date" name="nascimento" id="nascimento" value="<?=  $navegador['nascimento']?>">
-                            </label><br>
-
-                            <label for="navio">De qual navio faz parte? <br>
-                            <?php
-                                $consulta = $mysqli->prepare("select * from navio");
-                                $consulta->execute();
-                                
-                                $resultado = $consulta->get_result();
-                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
-                                
-                                echo "<select name=\"navio\" id=\"navio\">\n";
-                                echo "\t<option value=\"\">Selecione</option>\n";
-                                foreach($registros as $registro) {
-                                    echo "\t<option value=\"{$registro['id_navio']}\"". ($navegador['navio'] == $registro['id_navio'] ? " selected" : "") .">{$registro['nome']}, número {$registro['id_navio']}</option>\n";
-                                }
-                                echo "</select>\n";
-                            ?>                               
-                            </label><br>
-
-                            <label for="cargo">Cargo <br>
-                            <?php
-                                $consulta = $mysqli->prepare("select * from cargo");
-                                $consulta->execute();
-                                
-                                $resultado = $consulta->get_result();
-                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
-                                
-                                echo "<select name=\"cargo\" id=\"cargo\">\n";
-                                echo "\t<option value=\"\">Selecione</option>\n";
-                                
-                                foreach($registros as $registro) {
-                                    echo "\t<option value=\"{$registro['id_cargo']}\"";
-                                    echo ($navegador['cargo'] == $registro['id_cargo'] ? " selected" : "");
-                                    echo ">{$registro['nome']}</option>\n";
-                                }
-                                echo "</select>\n";
-                            ?>
-                            </label><br>
-
-                            <label for="maestria">Adicionar maestria <br>
-                                <select name="maestria" id="maestria">
-                                    <option value="maestria">nome da arma</option>
-                                </select>
-                            </label>
-
-                        </div>
-                    </div>
-
-                <div style="display: flex; justify-content: space-around;">
-
-                    <label for="foto">Foto de perfil 
-                        <input type="file">
-                    </label>
-
-                    <button type="submit">Enviar</button>
-
-                </div>    
-            </fieldset>
-        </form>
-    </section>
+    <?php
+        $consulta = $mysqli->prepare("select * from cargo");
+        $consulta->execute();
+        
+        $resultado = $consulta->get_result();
+        $registros = $resultado->fetch_all(MYSQLI_ASSOC);
+        
+        echo "<select name=\"cargo\" id=\"cargo\">\n";
+        echo "\t<option value=\"\">Selecione</option>\n";
+        
+        foreach($registros as $registro) {
+            echo "\t<option value=\"{$registro['id_cargo']}\"";
+            echo ($navegador['cargo'] == $registro['id_cargo'] ? " selected" : "");
+            echo ">{$registro['nome']}</option>\n";
+        }
+        echo "</select>\n";
+    ?>
+    <br><br>
+    <?php
+        echo "<a href=\"../deletar/deletenavegador.php?id={$navegador['id_navegador']}\"><button><h3>Apagar todos os registros</h3></button></a>";
+    ?>
 </main>
 </body>
 </html>

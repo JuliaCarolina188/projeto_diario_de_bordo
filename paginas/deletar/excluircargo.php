@@ -1,5 +1,5 @@
 <?php
-    require_once("./config.php");
+    require_once("../config.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +22,7 @@
 
 <body>
     <header>
-        <a href="index.php"><h1>Diário de Bordo</h1></a>
-        <nav>
-            <a href="editartrip.php">Editar tripulação</a>
-            <a href="editararmas.php">Editar Armas</a>
-            <a href="editarcargos.php">Editar Cargos</a>
-            <a href="editarnavios.php">Editar Navios</a>
-        </nav>
+        <a href="../index.php"><h1>Diário de Bordo</h1></a>
     </header>
 
 
@@ -39,7 +33,7 @@
     }
       $id = $_GET['id'];
       // sql com select e marcacao para recebimento de parametro
-      $sql = "select * FROM navegador WHERE id_navegador=?";
+      $sql = "select * FROM cargo WHERE id_cargo=?";
       // preparacao da instrucao
       $consulta = $mysqli->prepare($sql);
       // vincula parametros com indicacao
@@ -52,105 +46,21 @@
       $registros = $resultado->fetch_all(MYSQLI_ASSOC);
       // se houver quantidade de elementos/registros diferente de 1, deve ser erro
       if (count($registros) != 1) {
-        echo "Navegador não encontrado";
+        echo "Cargo não encontrado";
         die();
       }
       // 'pega' o primeiro registro (indice 0) dos $registros - select com where para pk retorna 1 registro
-      $navegador = $registros[0];
+      $cargo = $registros[0];
     ?>
 
 <main>
-    <section>
-        <form action="updatenavegador.php" class="formnovo">
-            <fieldset>
-                <legend class="embacadinho"><h2>Adicionar um novo navegador</h2></legend><br>
+    <form action="deletecargo.php?cargo['id_cargo']">
+        <p>ID: <?=  $cargo['id_cargo']?></p>
+        <p>Nome: <?=  $cargo['nome']?></p>
+        <p>Descrição: <?=  $cargo['descricao']?></p>
 
-                    <div style="display:flex;">
-
-                         <div class="inf1" style="margin:auto;">
-                            <input type="hidden" value="<?=  $id?>" name="id">
-
-                            <label for="nome">Nome <br>
-                                <input type="text" name="nome" id="nome" size="50px" value="<?=  $navegador['nome']?>">
-                            </label><br>
-
-                            <label for="sobrenome">Sobrenome <br>
-                                <input type="text" name="sobrenome" id="sobrenome" size="50px" value="<?=  $navegador['sobrenome']?>">
-                            </label><br>
-
-                            <label for="titulo">Título <br>
-                                <input type="text" name="titulo" id="titulo" size="50px" value="<?=  $navegador['titulo']?>">
-                            </label><br>
-
-                            <label for="origem">Origem <br>
-                                <input type="text" name="origem" id="origem" size="50px" value="<?=  $navegador['origem']?>">
-                            </label><br>
-                        </div>
-                            
-                        <div class="inf1" style="margin:auto;">
-
-                            <label for="nascimento">Data de nascimento<br>
-                                <input type="date" name="nascimento" id="nascimento" value="<?=  $navegador['nascimento']?>">
-                            </label><br>
-
-                            <label for="navio">De qual navio faz parte? <br>
-                            <?php
-                                $consulta = $mysqli->prepare("select * from navio");
-                                $consulta->execute();
-                                
-                                $resultado = $consulta->get_result();
-                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
-                                
-                                echo "<select name=\"navio\" id=\"navio\">\n";
-                                echo "\t<option value=\"\">Selecione</option>\n";
-                                foreach($registros as $registro) {
-                                    echo "\t<option value=\"{$registro['id_navio']}\"". ($navegador['navio'] == $registro['id_navio'] ? " selected" : "") .">{$registro['nome']}, número {$registro['id_navio']}</option>\n";
-                                }
-                                echo "</select>\n";
-                            ?>                               
-                            </label><br>
-
-                            <label for="cargo">Cargo <br>
-                            <?php
-                                $consulta = $mysqli->prepare("select * from cargo");
-                                $consulta->execute();
-                                
-                                $resultado = $consulta->get_result();
-                                $registros = $resultado->fetch_all(MYSQLI_ASSOC);
-                                
-                                echo "<select name=\"cargo\" id=\"cargo\">\n";
-                                echo "\t<option value=\"\">Selecione</option>\n";
-                                
-                                foreach($registros as $registro) {
-                                    echo "\t<option value=\"{$registro['id_cargo']}\"";
-                                    echo ($navegador['cargo'] == $registro['id_cargo'] ? " selected" : "");
-                                    echo ">{$registro['nome']}</option>\n";
-                                }
-                                echo "</select>\n";
-                            ?>
-                            </label><br>
-
-                            <label for="maestria">Adicionar maestria <br>
-                                <select name="maestria" id="maestria">
-                                    <option value="maestria">nome da arma</option>
-                                </select>
-                            </label>
-
-                        </div>
-                    </div>
-
-                <div style="display: flex; justify-content: space-around;">
-
-                    <label for="foto">Foto de perfil 
-                        <input type="file">
-                    </label>
-
-                    <button type="submit">Enviar</button>
-
-                </div>    
-            </fieldset>
-        </form>
-    </section>
+        <input type="submit" value="Excluir cargo">
+    </form>
 </main>
 </body>
 </html>

@@ -55,4 +55,5 @@ if ($stmt->execute() === TRUE) {
 
 echo "Navegador inserido com sucesso!";
 echo "<br>\n<br>\n     <a href=\"../index.html\">Página inicial</a>       \n";
+echo "<br>\n<br>\n     <a href=\"../mostrar/mostrarnavegador.php\">Ver tripulação</a>       \n";
 ?>

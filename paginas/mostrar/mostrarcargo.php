@@ -12,35 +12,34 @@
 <body>
     <header>
         <h1>Diário de Bordo</h1>
-        <a href="../index.php">Página inicial</a>
     </header>
 <main>
-    <section class="mostrartripulacao">
-        <h2>Cargos</h2> <br>
+    <h2>Cargos</h2> 
+    <a href="../index.php">Página inicial</a> <br><br>
 
-        <?php
-            $consulta = $mysqli->prepare("SELECT * FROM cargo");
-            $consulta->execute();
-            
-            $resultado = $consulta->get_result();
-            $registros = $resultado->fetch_all(MYSQLI_ASSOC);
-            
-            foreach($registros as $registro) {
-                echo "ID: {$registro['id_cargo']}<br>";
-                echo "<div style=\"margin-left: 30px;\">";
-                    echo "Nome: {$registro['nome']}<br>";
-                    echo "Descrição: {$registro['descricao']}<br>";
-
-                    echo "<a href=\"  ../editar/editarcargo.php?id={$registro['id_navegador']}  \">Editar</a> <br>";
-                    echo "<a href=\"  ../deletar/excluircargo.php?id={$registro['id_navegador']}  \">Deletar</a>";
-                echo "<br>";
-                echo "<br>";
-                echo "</div>";
-            }
-        ?>
+    <?php
+        $consulta = $mysqli->prepare("SELECT cargo.id_cargo, cargo.nome as nome_cargo, cargo.descricao, navegador.nome,   navegador.id_navegador, navegador.origem FROM cargo LEFT JOIN navegador  ON navegador.cargo = cargo.id_cargo ORDER BY cargo.id_cargo");
+        $consulta->execute();
         
-    </section>
+        $resultado = $consulta->get_result();
+        $registros = $resultado->fetch_all(MYSQLI_ASSOC);
+        
+        foreach($registros as $registro) {
+            echo "<strong>{$registro['nome_cargo']}</strong><br>";
+            echo "<div style=\"margin-left: 30px;\">";
+                echo "ID: {$registro['id_cargo']}<br>";
+                echo "{$registro['descricao']}<br>";
 
+                echo "<br>";
+                echo "Principal pessoa com esse cargo:<br>";
+                echo "<strong>{$registro['nome']}</strong>";
+                echo "<br><br><a href=\"  ../editar/editarcargo.php?id={$registro['id_cargo']}  \">Editar</a> ou ";
+                echo "<a href=\"  ../deletar/excluircargo.php?id={$registro['id_cargo']}  \">Deletar</a>";
+            echo "<br>";
+            echo "<br>";
+            echo "</div>";
+        }
+    ?>
     <hr>
 </main>
 </body>

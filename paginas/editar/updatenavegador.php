@@ -52,8 +52,8 @@ if ($stmt->execute() === TRUE) {
 } else {
   echo "Erro ao inserir registro: " . $mysqli->error;
 }
-
-echo "<br>\n<br>\n   <a href=\"  ../index.php  \">Página inicial</a>   \n";
-echo "<br>\n<br>\n   <a href=\"  ../mostrarnavegador.php  \">Ver navegadores</a>   \n";
-
+echo "<br><br>";
+echo "<a href=\"../index.html\">Página inicial</a>";
+echo "<br><br>";
+echo "<a href=\"../mostrar/mostrarnavegador.php\">Ver navegadores</a>";
 ?>

@@ -1,6 +1,6 @@
 <?php
 // funcao require_once carrega codigo de outros arquivos e executa
-require_once("./config.php"); // declare $obj da conexao de nome $mysqli
+require_once("../config.php"); // declare $obj da conexao de nome $mysqli
 
 // como o parametro chega por requisicao get, usamos $_GET 
 // para recuperar os valores
@@ -13,30 +13,23 @@ require_once("./config.php"); // declare $obj da conexao de nome $mysqli
 // transferimos para variaveis comuns para ficar a disposição no restante do programa/script
 
 $id = $_GET['id'];
-$nome = $_GET['nome'];
-$sobrenome = $_GET['sobrenome'];
-$titulo = $_GET['titulo'];
-$origem = $_GET['origem'];
-
-
-$nascimento = $_GET['nascimento'];
-$navio = $_GET['navio'];
-$cargo = $_GET['cargo'];
+$nome = $_GET['nome_cargo'];
+$descricao = $_GET['desc_cargo'];
 //$maestria = $_GET['maestria'];
 
 
 // sql com insert - instrucao parametrizada
-$sql = "update navegador set nome=?, sobrenome=?, titulo=?, origem=?, nascimento=?, navio=?, cargo=? where id_navegador = ?";
+$sql = "update cargo set nome=?, descricao=? where id_cargo= ?";
 $stmt = $mysqli->prepare($sql);
 
 // vincula valores nas variaveis as marcacoes ??
-$stmt->bind_param("sssssiii", $nome, $sobrenome, $titulo, $origem, $nascimento, $navio, $cargo, $id);
+$stmt->bind_param("ssi", $nome, $descricao, $id);
 
 
 if ($stmt->execute() === TRUE) {
   // no caso de uso de AUTO_INCREMENT sera preciso usar funcao que recupera que é a nova chave gerada
   //$nova_chave = $stmt->insert_id;
-  echo "Registro inserido com sucesso!";
+  echo "Cargo atualizado com sucesso!";
   // houve sucesso na criacao do registro, vai fazer o insert do campo da relacao N:N
   // se a chave usa auto increment é preciso saber qual a PK atribuida
   // prepara
@@ -50,9 +43,10 @@ if ($stmt->execute() === TRUE) {
   }*/
 
 } else {
-  echo "Erro ao inserir registro: " . $mysqli->error;
+  echo "Erro ao atualizar cargo: " . $mysqli->error;
 }
 
-echo "<br>\n<br>\n<a href=\"index.php\">Página inicial</a>\n";
+echo "<br>\n<br>\n<a href=\"../mostrar/mostrarcargo.php\">Ver cargos</a>\n";
+echo "<br>\n<br>\n<a href=\"../index.html\">Página inicial</a>\n";
 
 ?>

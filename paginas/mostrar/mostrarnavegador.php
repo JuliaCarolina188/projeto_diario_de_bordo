@@ -12,11 +12,11 @@
 <body>
     <header>
         <h1>Diário de Bordo</h1>
-        <a href="../index.php">Página inicial</a>
     </header>
 <main>
     <section class="mostrartripulacao">
         <h2>Tripulação</h2> <br>
+        <a href="../index.html">Página inicial</a><br><br>
 
         <?php
             $consulta = $mysqli->prepare("
@@ -28,7 +28,7 @@
                     cargo c ON n.cargo = c.id_cargo
                 INNER JOIN
                     navio v ON n.navio = v.id_navio
-                ORDER BY n.id_navegador
+                ORDER BY n.cargo
             ");
             $consulta->execute();
             
@@ -38,18 +38,14 @@
             foreach($registros as $registro) {
                 echo "ID: {$registro['id_navegador']}<br>";
                 echo "<div style=\"margin-left: 30px;\">";
-                    echo "Nome: {$registro['nome']}<br>"; 
-                    echo "Sobrenome: {$registro['sobrenome']}<br>";
-                    echo "Título: {$registro['titulo']}<br>"; 
-                    echo "Origem: {$registro['origem']}<br>";
+                    echo "{$registro['nome']} {$registro['sobrenome']} \"<strong>{$registro['titulo']}</strong>\" de {$registro['origem']}<br>"; 
                     
                     echo "<br>";
 
-                    echo "Data de nascimento: {$registro['nascimento']}<br>";
-                    echo "Cargo: {$registro['nome_cargo']}<br>"; 
-                    echo "Navio: {$registro['nome_navio']}<br>";
+                    echo "Nascido em {$registro['nascimento']}, <strong>{$registro['nome_cargo']}</strong> da embarcação,<br>";
+                    echo "<strong>\"{$registro['nome_navio']}\"</strong>, numero {$registro['navio']}<br>";
 
-                    echo "<a href=\"../editar/editarnavegador.php?id={$registro['id_navegador']}\">Editar</a> <br>";
+                    echo "<a href=\"../editar/editarnavegador.php?id={$registro['id_navegador']}\">Editar</a> ou ";
                     echo "<a href=\"../deletar/excluirnavegador.php?id={$registro['id_navegador']}\">Deletar</a>";
                 echo "<br>";
                 echo "<br>";
