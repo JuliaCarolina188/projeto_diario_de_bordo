@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 27/11/2025 às 00:31
+-- Tempo de geração: 26/11/2025 às 03:05
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -115,12 +115,9 @@ CREATE TABLE `navegador` (
 
 INSERT INTO `navegador` (`id_navegador`, `nome`, `nascimento`, `cargo`, `navio`, `sobrenome`, `titulo`, `origem`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Duke', '2009-02-03', 3, 1, 'Cabral', 'Feio', 'Porto Alegre'),
 (3, 'Marco', '2009-02-23', 2, 1, 'Antônio', 'Rei Lindo', 'Sapiranga'),
-(6, 'Julia', '2008-09-05', 1, 1, 'Carolina', 'Lindíssima', 'Sapiranga'),
-(7, 'Fernando', '2077-11-17', 4, 1, 'Schumann', 'Dono dos otários', 'Campo Bom'),
-(8, 'Mesias', '2025-11-25', 3, 1, 'Baudelaire Duke The Fucker', 'Resolvedor de Enigmas', 'De Porto Bah Meu'),
-(9, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(6, 'Julia', '2008-09-05', 1, 1, 'Carolina', 'Linda', 'Sapiranga');
 
 -- --------------------------------------------------------
 
@@ -140,7 +137,7 @@ CREATE TABLE `navio` (
 --
 
 INSERT INTO `navio` (`id_navio`, `nome`, `tipo`, `numero`) VALUES
-(1, 'Navio legal', 1, 1);
+(1, 'Navio legao', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +156,7 @@ CREATE TABLE `tipo_navio` (
 --
 
 INSERT INTO `tipo_navio` (`id_tipo_navio`, `nome`, `descricao`) VALUES
-(1, 'Navio de guerra', 'Tipicamente usado para combate. É aqui que são guardadas a maior parte das armas, e é aqui onde ficam boa parte dos guerreiros.'),
+(1, 'Navio de guerra', NULL),
 (2, 'Navio de tripulantes', NULL),
 (3, 'Navio de suprimentos', NULL),
 (4, 'Navio tanque', NULL);
@@ -217,13 +214,13 @@ ALTER TABLE `tipo_navio`
 -- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
-  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `maestria`
@@ -235,13 +232,13 @@ ALTER TABLE `maestria`
 -- AUTO_INCREMENT de tabela `navegador`
 --
 ALTER TABLE `navegador`
-  MODIFY `id_navegador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_navegador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `navio`
 --
 ALTER TABLE `navio`
-  MODIFY `id_navio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_navio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_navio`
