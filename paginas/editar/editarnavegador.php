@@ -45,7 +45,7 @@
     <section>
         <form action="updatenavegador.php" class="formnovo">
             <fieldset>
-                <legend><h2>Adicionar um novo navegador</h2></legend><br>
+                <legend><h2>Editar navegador</h2></legend><br>
 
                     <div">
 

@@ -23,6 +23,7 @@ require_once('../config.php')
     <form action="insertnavio.php" method="get">
         <h2>Novo navio</h2>
         <label for="nomnavio">Nome <input type="text" id="nomnavio" name="nomnavio"></label><br><br>
+        <label for="numnavio">Número <input type="number" id="numnavio" name="numnavio"></label><br><br>
         
         <p>Tipo</p>
         <?php 

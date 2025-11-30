@@ -14,15 +14,16 @@ require_once("../config.php"); // declare $obj da conexao de nome $mysqli
 
 $nome = $_GET['nomnavio'];
 $tipo = $_GET['tipo'];
+$numero = $_GET['numnavio'];
 //$maestria = $_GET['maestria'];
 
 
 // sql com insert - instrucao parametrizada
-$sql = "insert into navio (nome, tipo) values (?, ?)";
+$sql = "insert into navio (nome, tipo, numero) values (?, ?, ?)";
 $stmt = $mysqli->prepare($sql);
 
 // vincula valores nas variaveis as marcacoes ??
-$stmt->bind_param("si", $nome, $tipo);
+$stmt->bind_param("sii", $nome, $tipo, $numero);
 
 // executa instrucao preparada/parametrizada e vinculada com parametros
 $html = "";
@@ -47,7 +48,7 @@ if ($stmt->execute() === TRUE) {
   echo $html;
 }
 
-echo "<br>\n<br>\n<a href=\"../index.php\">Página inicial</a>\n";
+echo "<br>\n<br>\n<a href=\"../index.html\">Página inicial</a>\n";
 echo "<br>\n<br>\n<a href=\"../mostrar/mostrarnavio.php\">Voltar para navios</a>\n";
 
 ?>

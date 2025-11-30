@@ -16,6 +16,7 @@
     </header>
 <main>
     <h2>Cargos</h2> 
+    <a href="../inserir/novocargo.php">Adiconar novo cargo</a><br>
     <a href="../index.html">Página inicial</a> <br><br>
 
     <?php

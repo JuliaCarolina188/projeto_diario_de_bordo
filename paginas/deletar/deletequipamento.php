@@ -44,7 +44,7 @@ if ($stmt->execute() === TRUE) {
   echo "Erro ao apagar registro: " . $mysqli->error;
 }
 
-echo "<br>\n<br>\n<a href=\"../index.php\">Página inicial</a>\n";
+echo "<br>\n<br>\n<a href=\"../index.html\">Página inicial</a>\n";
 echo "<br>\n<br>\n<a href=\"../mostrar/mostrarequipamento.php\">Ver equipamentos</a>\n";
 
 ?>

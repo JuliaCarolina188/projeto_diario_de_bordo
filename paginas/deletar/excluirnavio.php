@@ -26,7 +26,7 @@
     }
       $id = $_GET['id_navio'];
       // sql com select e marcacao para recebimento de parametro
-      $sql = "select * FROM navio WHERE id_navio=?";
+      $sql = "select navio.id_navio, navio.nome, navio.tipo, tipo_navio.descricao as navio_desc, tipo_navio.nome as tipo_nome FROM navio JOIN tipo_navio ON navio.tipo = tipo_navio.id_tipo_navio WHERE id_navio=?";
       // preparacao da instrucao
       $consulta = $mysqli->prepare($sql);
       // vincula parametros com indicacao
@@ -51,7 +51,8 @@
         <input type="hidden" value="<?=  $navio['id_navio']?>" name="id_navio">
         <p>ID: <?=  $navio['id_navio']?></p>
         <p>Nome: <?=  $navio['nome']?></p>
-        <p>Descrição: <?=  $navio['descricao']?></p>
+        <p>Tipo: <?=  $navio['tipo_nome']?></p>
+        <p>Descrição: <?=  $navio['navio_desc']?></p>
 
         <input type="submit" value="Excluir navio">
     </form>

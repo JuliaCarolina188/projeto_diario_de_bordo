@@ -21,11 +21,11 @@
 
 
     <?php 
-    if (!isset($_GET['id'])) {
+    if (!isset($_GET['id_equipamento'])) {
         echo "Faltou parâmetro";
         die();
     }
-      $id = $_GET['id'];
+      $id = $_GET['id_equipamento'];
       // sql com select e marcacao para recebimento de parametro
       $sql = "select * FROM equipamento WHERE id_equipamento=?";
       // preparacao da instrucao

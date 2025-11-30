@@ -1,3 +1,9 @@
+<style>
+  <?php 
+    include("../style.css");
+  ?>
+</style>
+
 <?php
 // funcao require_once carrega codigo de outros arquivos e executa
 require_once("../config.php"); // declare $obj da conexao de nome $mysqli
